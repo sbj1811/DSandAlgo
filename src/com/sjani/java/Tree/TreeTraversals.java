@@ -17,13 +17,13 @@ public class TreeTraversals {
         System.out.print("Height: ");
         System.out.println(bt.height(head));
         TreeTraversals tt = new TreeTraversals();
-        System.out.print("Preorder: ");
+        System.out.print("Pre-order: ");
         tt.preOrder(head);
         System.out.println();
-        System.out.print("Postorder: ");
+        System.out.print("Post-order: ");
         tt.postOrder(head);
         System.out.println();
-        System.out.print("Inorder: ");
+        System.out.print("In-order: ");
         tt.inOrder(head);
     }
 
