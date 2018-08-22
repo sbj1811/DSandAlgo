@@ -2,11 +2,11 @@ package com.sjani.java.LinkedList;
 
 public class Node {
 
-    int data;
-    Node next;
-    Node previous;
+    public int data;
+    public Node next;
+    public Node previous;
 
-    Node(int i) {
+    public Node(int i) {
         this.data = i;
         this.next = null;
         this.previous = null;

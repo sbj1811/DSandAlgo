@@ -2,10 +2,10 @@ package com.sjani.java.Tree;
 
 public class Node {
 
-    int data;
-    Node left, right;
+    public int data;
+    public Node left, right;
 
-    Node(int i) {
+    public Node(int i) {
         data = i;
         left = right = null;
     }

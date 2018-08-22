@@ -5,26 +5,26 @@ public class DoublyLinkedList {
     public static void main(String[] args) {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
         Node head = null;
-        head = doublyLinkedList.append(head,18);
-        head = doublyLinkedList.append(head,45);
-        head = doublyLinkedList.append(head,12);
+        head = doublyLinkedList.append(head, 18);
+        head = doublyLinkedList.append(head, 45);
+        head = doublyLinkedList.append(head, 12);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.prepend(head,14);
-        head = doublyLinkedList.append(head,34);
+        head = doublyLinkedList.prepend(head, 14);
+        head = doublyLinkedList.append(head, 34);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.insert(head,5, 3);
+        head = doublyLinkedList.insert(head, 5, 3);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.insert(head,55, 5);
+        head = doublyLinkedList.insert(head, 55, 5);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.insert(head,61, 7);
+        head = doublyLinkedList.insert(head, 61, 7);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.insert(head,76, 0);
+        head = doublyLinkedList.insert(head, 76, 0);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.deleteAtPosition(head,3);
+        head = doublyLinkedList.deleteAtPosition(head, 3);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.deleteAtPosition(head,7);
+        head = doublyLinkedList.deleteAtPosition(head, 7);
         doublyLinkedList.printList(head);
-        head = doublyLinkedList.deleteWithData(head,55);
+        head = doublyLinkedList.deleteWithData(head, 55);
         doublyLinkedList.printList(head);
         head = doublyLinkedList.reverseIterative(head);
         doublyLinkedList.printList(head);
@@ -32,9 +32,9 @@ public class DoublyLinkedList {
         doublyLinkedList.printList(head);
     }
 
-    public Node prepend (Node head, int data){
+    public Node prepend(Node head, int data) {
         Node node = new Node(data);
-        if(head ==  null){
+        if (head == null) {
             return node;
         }
         node.next = head;
@@ -61,29 +61,29 @@ public class DoublyLinkedList {
     public Node insert(Node head, int data, int position) {
         Node temp = head;
         Node node = new Node(data);
-        if(head == null){
+        if (head == null) {
             return node;
         }
-        if(position == 0){
+        if (position == 0) {
             node.next = head;
             head.previous = node;
             return node;
         }
-        Node current =  head;
+        Node current = head;
         int i = 0;
-        while(i < position - 1){
+        while (i < position - 1) {
             current = current.next;
             if (current.next == null) {
                 break;
             }
             i++;
         }
-        node.next =  current.next;
-        if (current.next != null){
-            current.next.previous =  node;
+        node.next = current.next;
+        if (current.next != null) {
+            current.next.previous = node;
         }
-        current.next =  node;
-        node.previous =  current;
+        current.next = node;
+        node.previous = current;
         return temp;
     }
 
@@ -107,7 +107,7 @@ public class DoublyLinkedList {
             i++;
         }
         current.next = current.next.next;
-        if(current.next != null) {
+        if (current.next != null) {
             current.next.previous = current;
         }
         return temp;
@@ -127,7 +127,7 @@ public class DoublyLinkedList {
         while (current.next != null) {
             if (current.next.data == data) {
                 current.next = current.next.next;
-                if(current.next != null) {
+                if (current.next != null) {
                     current.next.previous = current;
                 }
                 return temp;
@@ -144,7 +144,7 @@ public class DoublyLinkedList {
         while (current != null) {
             next = current.next;
             current.next = current.previous;
-            current.previous =  next;
+            current.previous = next;
             previous = current;
             current = next;
         }
@@ -152,19 +152,18 @@ public class DoublyLinkedList {
     }
 
 
-
     public Node reverseRecursive(Node head) {
         Node current = head;
         Node next;
-        if(current.next == null){
+        if (current.next == null) {
             head = current;
             return head;
         }
         head = reverseRecursive(current.next);
         next = current.next;
         current.next = current.previous;
-        current.previous =  next;
-        current.previous.next =  current;
+        current.previous = next;
+        current.previous.next = current;
         current.next = null;
         return head;
     }
