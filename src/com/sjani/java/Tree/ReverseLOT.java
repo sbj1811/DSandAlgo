@@ -1,5 +1,8 @@
 package com.sjani.java.Tree;
 
+import com.sjani.java.Queue.QueueArray;
+import com.sjani.java.Queue.QueueLinkedList;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -8,13 +11,13 @@ public class ReverseLOT {
 
     public void levelByLevelTraversal(Node root){
         if(root == null) return;
-        Queue<Node> q = new LinkedList<Node>();
+        QueueLinkedList<Node> q = new QueueLinkedList<Node>();
         Stack<Node> s = new Stack<Node>();
-        q.add(root);
+        q.offer(root);
         while(!q.isEmpty()){
             root = q.poll();
-            if(root.right != null) q.add(root.right);
-            if(root.left != null) q.add(root.left);
+            if(root.right != null) q.offer(root.right);
+            if(root.left != null) q.offer(root.left);
             s.push(root);
         }
         while(!s.isEmpty()){

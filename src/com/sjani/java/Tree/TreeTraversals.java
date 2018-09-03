@@ -1,5 +1,7 @@
 package com.sjani.java.Tree;
 
+import com.sjani.java.Stack.StackLinkedList;
+
 import java.util.Stack;
 
 public class TreeTraversals {
@@ -39,6 +41,8 @@ public class TreeTraversals {
         System.out.print("In-order: ");
         tt.iterativeInorder(head);
         System.out.println();
+        System.out.println("Min value in tree: "+bt.findMin(head));
+        System.out.println("Max value in tree: "+bt.findMax(head));
     }
 
     // VLR
@@ -75,17 +79,17 @@ public class TreeTraversals {
         if (root == null) {
             return;
         }
-        Stack<Node> s1 = new Stack<Node>();
-        Stack<Node> s2 = new Stack<Node>();
+        StackLinkedList<Node> s1 = new StackLinkedList<Node>();
+        StackLinkedList<Node> s2 = new StackLinkedList<Node>();
         s1.push(root);
         while(!s1.isEmpty()){
             root = s1.pop();
             s2.push(root);
             if(root.left != null){
-                s1.add(root.left);
+                s1.push(root.left);
             }
             if(root.right != null){
-                s1.add(root.right);
+                s1.push(root.right);
             }
         }
         while(!s2.isEmpty()){
@@ -97,16 +101,16 @@ public class TreeTraversals {
         if (root == null) {
             return;
         }
-        Stack<Node> s1 = new Stack<Node>();
+        StackLinkedList<Node> s1 = new StackLinkedList<Node>();
         s1.push(root);
         while(!s1.isEmpty()){
             root = s1.pop();
             System.out.print(root.data+" ");
             if(root.right != null){
-                s1.add(root.right);
+                s1.push(root.right);
             }
             if(root.left != null){
-                s1.add(root.left);
+                s1.push(root.left);
             }
         }
 
@@ -116,7 +120,7 @@ public class TreeTraversals {
         if (root == null) {
             return;
         }
-        Stack<Node> s1 = new Stack<Node>();
+        StackLinkedList<Node> s1 = new StackLinkedList<Node>();
         while(true) {
             if (root != null) {
                 s1.push(root);

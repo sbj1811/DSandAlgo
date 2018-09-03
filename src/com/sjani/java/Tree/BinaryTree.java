@@ -27,9 +27,31 @@ public class BinaryTree {
         return temp;
     }
 
+    public int findMin(Node root){
+        Node current = root;
+        if(root == null){
+            return -1;
+        }
+        while(current.left != null){
+            current = current.left;
+        }
+        return current.data;
+    }
+
+    public int findMax(Node root){
+        Node current = root;
+        if(root == null){
+            return -1;
+        }
+        while(current.right != null){
+            current = current.right;
+        }
+        return current.data;
+    }
+
     public int height(Node root) {
         if (root == null) {
-            return 0;
+            return -1;
         }
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);

@@ -1,5 +1,8 @@
 package com.sjani.java.Tree;
 
+import com.sjani.java.Queue.QueueArray;
+import com.sjani.java.Queue.QueueLinkedList;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -7,18 +10,18 @@ public class LevelByLevelLOT {
 
     public void levelByLevelTraversal2Queue(Node root) {
         if (root == null) return;
-        Queue<Node> q1 = new LinkedList<Node>();
-        Queue<Node> q2 = new LinkedList<Node>();
-        q1.add(root);
+        QueueArray<Node> q1 = new QueueArray<Node>();
+        QueueArray<Node> q2 = new QueueArray<Node>();
+        q1.offer(root);
         while (!q1.isEmpty() || !q2.isEmpty()) {
             while (!q1.isEmpty()) {
                 root = q1.poll();
                 System.out.print(root.data + " ");
                 if (root.left != null) {
-                    q2.add(root.left);
+                    q2.offer(root.left);
                 }
                 if (root.right != null) {
-                    q2.add(root.right);
+                    q2.offer(root.right);
                 }
             }
             System.out.println();
@@ -26,10 +29,10 @@ public class LevelByLevelLOT {
                 root = q2.poll();
                 System.out.print(root.data + " ");
                 if (root.left != null) {
-                    q1.add(root.left);
+                    q1.offer(root.left);
                 }
                 if (root.right != null) {
-                    q1.add(root.right);
+                    q1.offer(root.right);
                 }
             }
             System.out.println();
@@ -38,23 +41,23 @@ public class LevelByLevelLOT {
 
     public void levelByLevelTraversalQueueDelimiter(Node root) {
         if (root == null) return;
-        Queue<Node> q1 = new LinkedList<Node>();
-        q1.add(root);
-        q1.add(null);
+        QueueLinkedList<Node> q1 = new QueueLinkedList<Node>();
+        q1.offer(root);
+        q1.offer(null);
         while (!q1.isEmpty()) {
             root = q1.poll();
             if (root != null) {
                 System.out.print(root.data + " ");
                 if (root.left != null) {
-                    q1.add(root.left);
+                    q1.offer(root.left);
                 }
                 if (root.right != null) {
-                    q1.add(root.right);
+                    q1.offer(root.right);
                 }
             } else {
                 if (!q1.isEmpty()) {
                     System.out.println();
-                    q1.add(null);
+                    q1.offer(null);
                 }
             }
         }
@@ -62,20 +65,20 @@ public class LevelByLevelLOT {
 
     public void levelByLevelTraversalQueueCount(Node root) {
         if (root == null) return;
-        Queue<Node> q1 = new LinkedList<Node>();
+        QueueArray<Node> q1 = new QueueArray<Node>();
         int levelCount = 1;
         int currentCount = 0;
-        q1.add(root);
+        q1.offer(root);
         while (!q1.isEmpty()) {
             while (levelCount > 0) {
                 root = q1.poll();
                 System.out.print(root.data + " ");
                 if (root.left != null) {
-                    q1.add(root.left);
+                    q1.offer(root.left);
                     currentCount++;
                 }
                 if (root.right != null) {
-                    q1.add(root.right);
+                    q1.offer(root.right);
                     currentCount++;
                 }
                 levelCount--;
