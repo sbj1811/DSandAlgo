@@ -1,6 +1,6 @@
 package com.sjani.java.LinkedList;
 
-public class DoublyLinkedList {
+public class DoublyLinkedList<T extends Comparable<T>> {
 
     public static void main(String[] args) {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
@@ -32,7 +32,7 @@ public class DoublyLinkedList {
         doublyLinkedList.printList(head);
     }
 
-    public Node prepend(Node head, int data) {
+    public Node prepend(Node head, T data) {
         Node node = new Node(data);
         if (head == null) {
             return node;
@@ -42,7 +42,7 @@ public class DoublyLinkedList {
         return node;
     }
 
-    public Node append(Node head, int data) {
+    public Node append(Node head, T data) {
         Node temp = head;
         Node node = new Node(data);
         if (head == null) {
@@ -58,7 +58,7 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public Node insert(Node head, int data, int position) {
+    public Node insert(Node head, T data, int position) {
         Node temp = head;
         Node node = new Node(data);
         if (head == null) {
@@ -118,14 +118,14 @@ public class DoublyLinkedList {
         if (head == null) {
             return null;
         }
-        if (head.data == data) {
+        if (head.data.compareTo(data) == 0) {
             head = head.next;
             head.previous = null;
             return head;
         }
         Node current = head;
         while (current.next != null) {
-            if (current.next.data == data) {
+            if (current.next.data.compareTo(data) == 0) {
                 current.next = current.next.next;
                 if (current.next != null) {
                     current.next.previous = current;

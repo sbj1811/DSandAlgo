@@ -1,9 +1,9 @@
 package com.sjani.java.LinkedList;
 
-public class LinkedList {
+public class LinkedList<T extends Comparable<T>> {
 
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
         Node head = null;
         head = linkedList.append(head,18);
         head = linkedList.append(head,45);
@@ -36,14 +36,14 @@ public class LinkedList {
         linkedList.printList(head);
     }
 
-    public Node prepend(Node head, int data) {
+    public Node prepend(Node head, T data) {
         Node node = new Node(data);
         node.next = head;
         head = node;
         return head;
     }
 
-    public Node append(Node head, int data) {
+    public Node append(Node head, T data) {
         Node temp = head;
         Node node = new Node(data);
         if (head == null) {
@@ -58,7 +58,7 @@ public class LinkedList {
         return temp;
     }
 
-    public Node insert(Node head, int data, int position) {
+    public Node insert(Node head, T data, int position) {
         Node temp = head;
         Node node = new Node(data);
         if (head == null) {
@@ -106,7 +106,7 @@ public class LinkedList {
         return temp;
     }
 
-    public Node deleteWithData(Node head, int data) {
+    public Node deleteWithData(Node head, T data) {
         Node temp = head;
         if (head == null) {
             return null;
@@ -117,7 +117,7 @@ public class LinkedList {
         }
         Node current = head;
         while (current.next != null) {
-            if (current.next.data == data) {
+            if (current.next.data.compareTo(data) == 0) {
                 current.next = current.next.next;
                 return temp;
             }

@@ -1,12 +1,12 @@
 package com.sjani.java.LinkedList;
 
-public class Node {
+public class Node<T extends Comparable<T>> {
 
-    public int data;
+    public T data;
     public Node next;
     public Node previous;
 
-    public Node(int i) {
+    public Node(T i) {
         this.data = i;
         this.next = null;
         this.previous = null;
