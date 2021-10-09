@@ -17,7 +17,7 @@ import java.util.*;
 
  */
 
-class Solution {
+class FindPrefix {
     public static void main(String[] args) {
 
         List<String> list = new ArrayList<>(Arrays.asList("A", "Ab", "An", "Anm", "Ann"));
